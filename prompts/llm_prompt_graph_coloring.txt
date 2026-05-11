@@ -1,0 +1,61 @@
+Objectif : Créer des heuristiques de coloration de graphes pour résoudre efficacement le problème de graph coloring. 
+Chaque heuristique doit attribuer des couleurs aux sommets d'un graphe de sorte que deux sommets reliés par une arête n'aient jamais la même couleur.
+
+---
+
+CRITÈRES FONDAMENTAUX :
+1. La fonction doit être nommée `color_graph`.
+2. Entrée : un graphe représenté avec networkx (Graph object).
+3. Sortie : dictionnaire {noeud: couleur}.
+4. L'heuristique doit minimiser le nombre de couleurs utilisées.
+5. La fonction doit être efficace et capable de gérer des graphes de 50 à 500 sommets.
+
+---
+
+STRATÉGIES SUGGÉRÉES (choisir une ou combiner plusieurs) :
+- PRIORITÉ DE DEGRÉ : colorer les noeuds avec le plus de voisins non colorés en premier.
+- STRATÉGIE SPATIALE : privilégier certaines zones ou sous-graphes.
+- GREEDY VARIÉE : attribuer la couleur la moins utilisée dans le voisinage immédiat.
+- RANDOMISATION CONTRÔLÉE : introduire de la diversité pour éviter les répétitions.
+- PATTERN BASED : identifier des motifs connus et les colorer selon une règle préétablie.
+
+---
+
+RÈGLES DE CODAGE :
+- Utiliser Python 3 et networkx.
+- Ne pas utiliser de bibliothèques de coloration existantes (pas de nx.coloring).
+- Ajouter un nom et une description à chaque heuristique (fonctions `get_heuristic_name` et `get_heuristic_description`).
+- Ajouter des commentaires clairs.
+- Ajouter des variantes créatives de la stratégie choisie.
+
+---
+
+ÉVALUATION ET BENCHMARK :
+- Chaque heuristique sera testée sur un **benchmark de graphes variés**.
+- Mesurer :
+  1. Nombre de couleurs utilisées
+  2. Temps d'exécution
+  3. Équilibre des couleurs sur le graphe
+  4. Robustesse sur différents types de graphes
+- Fournir un **score composite** pour comparer les heuristiques.
+- Stocker les meilleures heuristiques pour générer de nouvelles variantes.
+
+---
+
+INSTRUCTIONS POUR LE LLM :
+1. Générer une fonction `color_graph` selon les critères et stratégies ci-dessus.
+2. Fournir le nom et la description de la stratégie.
+3. Veiller à la diversité par rapport aux heuristiques précédemment générées.
+4. Ajouter des idées créatives pour explorer l'espace de solutions.
+5. Fournir du code testable directement sur networkx.
+6. Préparer le code pour qu'il puisse être évalué sur le benchmark automatiquement.
+
+---
+
+RÉSULTATS ATTENDUS :
+- Ensemble de heuristiques testables
+- Scores et comparaisons sur benchmark
+- Graphes colorés visualisables
+- Rapport sur la performance et la diversité des stratégies
+
+GÉNÉREZ MAINTENANT UNE NOUVELLE HEURISTIQUE DE COLORATION DE GRAPHE !

@@ -1,0 +1,50 @@
+DIRECT INSTRUCTIONS FOR CODE GENERATION:
+
+Generate COMPLETE Python code for graph coloring heuristic.
+
+REQUIRED FUNCTIONS (must be complete with bodies):
+1. def color_graph(G): 
+   - Input: NetworkX Graph object
+   - Output: Dictionary {node: color}
+   - Complete algorithm implementation
+   
+2. def get_heuristic_name():
+   - Return: String with heuristic name
+   - Complete function with return statement
+   
+3. def get_heuristic_description():
+   - Return: String with algorithm description
+   - Complete function with return statement
+
+CRITICAL REQUIREMENTS:
+- NO markdown fences, NO explanations, ONLY working code
+- Each function MUST have a complete body (not just docstring)
+- Use NetworkX operations only
+- Minimize number of colors used
+- Handle graphs with 50-500 nodes
+- Include import statements
+
+STRATEGY IDEAS:
+- Degree-based ordering (highest degree first)
+- Randomized greedy with color balance
+- Welsh-Powell algorithm
+- DSATUR-inspired approach
+- Hybrid approaches
+
+CODE STRUCTURE EXAMPLE:
+import networkx as nx
+import random
+from typing import Dict
+
+def color_graph(G):
+    """Complete algorithm implementation"""
+    # Full implementation here
+    return coloring
+
+def get_heuristic_name():
+    return "your_heuristic_name"
+
+def get_heuristic_description():
+    return "Complete description of your algorithm"
+
+GENERATE COMPLETE WORKING CODE NOW:
