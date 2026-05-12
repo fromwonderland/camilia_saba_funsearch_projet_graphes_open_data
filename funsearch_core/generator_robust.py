@@ -9,8 +9,8 @@ import random
 import time
 import re
 from typing import List, Optional
-from api_client import LLMAPIClient
-from rate_limit_handler import rate_limiter
+from .api_client import LLMAPIClient
+from .rate_limit_handler import rate_limiter
 
 
 class RobustFunSearchGenerator:

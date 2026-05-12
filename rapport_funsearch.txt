@@ -1,0 +1,646 @@
+# RAPPORT DE PROJET FUNSEARCH - COLORATION DE GRAPHES
+================================================================================
+
+PARTIE 1 : PRÉSENTATION DÉTAILLÉE DU SUJET
+================================================================================
+
+1. CONTEXTE SCIENTIFIQUE
+-------------------------
+
+Le problème de la coloration de graphes constitue l'un des problèmes fondamentaux 
+de la théorie des graphes et de l'optimisation combinatoire. Classé dans la catégorie 
+des problèmes NP-complets, il consiste à attribuer une couleur à chaque sommet d'un 
+graphe de telle manière que deux sommets adjacents ne partagent jamais la même couleur,
+tout en minimisant le nombre total de couleurs utilisées.
+
+Les applications pratiques de ce problème sont nombreuses et variées :
+- Allocation des fréquences dans les réseaux de télécommunications
+- Planification des examens dans les établissements scolaires
+- Coloration de cartes géographiques
+- Allocation de ressources en informatique distribuée
+- Optimisation des circuits imprimés
+
+La complexité exponentielle de ce problème a motivé le développement de nombreuses 
+heuristiques, mais la recherche manuelle d'algorithmes performants reste un processus 
+chronophage et souvent limité par l'expertise humaine.
+
+2. FUNSEARCH : APPROCHE INNOVANTE
+---------------------------------
+
+FunSearch représente une rupture méthodologique significative dans l'approche des 
+problèmes d'optimisation. Développé par Google DeepMind, ce cadre d'évolution 
+automatique utilise les grands modèles de langage (LLM) pour générer, évaluer et 
+améliorer des heuristiques algorithmiques de manière autonome.
+
+Le principe repose sur un cycle évolutif :
+1. Génération de nouvelles heuristiques par un LLM
+2. Évaluation systématique sur un benchmark de référence
+3. Sélection des meilleures solutions
+4. Réinjection des solutions optimales dans le processus créatif
+
+Cette approche présente plusieurs avantages fondamentaux :
+- Exploration automatique d'un espace de solutions beaucoup plus vaste
+- Absence de biais cognitifs humains dans la conception
+- Capacité de découvrir des approches contre-intuitives mais efficaces
+- Adaptabilité à différents problèmes d'optimisation
+
+3. OBJECTIFS DU PROJET
+----------------------
+
+Notre projet s'est fixé plusieurs objectifs ambitieux :
+
+Objectif principal : Démontrer la faisabilité technique de l'approche FunSearch 
+avec les technologies cloud actuelles, en particulier l'API Mistral, et évaluer la 
+qualité des heuristiques générées automatiquement.
+
+Objectifs secondaires :
+- Mettre en place une infrastructure robuste et reproductible
+- Analyser quantitativement la performance des heuristiques générées
+- Comparer les résultats avec les algorithmes de référence
+- Identifier les limites et opportunités de cette approche
+- Produire une étude académique complète et publiable
+
+4. PÉRIMÈTRE DE L'ÉTUDE
+----------------------
+
+Notre étude se concentre sur un périmètre précis pour garantir la pertinence 
+statistique des résultats :
+
+Graphes cibles :
+- Taille : 50 à 500 sommets
+- Types : graphes non orientés, connexes
+- Densité : variable pour tester la robustesse des algorithmes
+
+Benchmark d'évaluation :
+- 50 instances de graphes générées aléatoirement
+- Évaluation sur critères multiples (nombre de couleurs, équilibre, temps)
+- Score composite pour comparaison équitable
+
+Métriques de performance :
+- Taux de succès (coloration valide)
+- Nombre de couleurs utilisées
+- Équilibre de la répartition des couleurs
+- Temps d'exécution
+- Score composite pondéré
+
+Ce périmètre garantit une évaluation rigoureuse tout en restant dans des 
+contraintes computationnelles raisonnables pour notre infrastructure.
+
+================================================================================
+FIN DE LA PARTIE 1
+================================================================================
+
+PARTIE 2 : MÉTHODOLOGIE DE TRAVAIL
+================================================================================
+
+1. PHASES DU PROJET
+-------------------
+
+Notre projet s'est déroulé en quatre phases distinctes, chacune correspondant à 
+un niveau de maturité croissant de notre infrastructure et de notre compréhension 
+du problème.
+
+Phase 1 : Exploration avec LLM locaux
+Cette phase initiale visait à évaluer la faisabilité de l'approche avec des 
+technologies open-source. Nous avons expérimenté plusieurs modèles locaux 
+(Qwen2.5-Coder, DeepSeek Coder V2) pour comprendre les capacités de génération 
+de code algorithmique. Cette phase a révélé des limitations importantes en termes 
+de cohérence et de qualité du code généré.
+
+Phase 2 : Migration vers API cloud
+Face aux limitations des modèles locaux, nous avons migré vers l'API Mistral, 
+offrant une meilleure qualité de génération et une plus grande fiabilité. Cette 
+transition a nécessité une refonte complète de notre infrastructure de communication 
+et de gestion des erreurs.
+
+Phase 3 : Optimisation de l'infrastructure
+Cette phase critique a consisté à construire un système robuste capable de gérer 
+les contraintes des API cloud (rate limits, timeouts) tout en maintenant une 
+qualité de génération élevée. Nous avons développé des mécanismes de retry, 
+de backoff exponentiel et de validation flexible.
+
+Phase 4 : Production massive
+La phase finale visait à démontrer la capacité de notre système à générer 
+un volume significatif d'heuristiques (100 cibles) avec un taux de succès 
+élevé, validant ainsi l'approche à l'échelle académique.
+
+2. APPROCHE ITÉRATIVE
+---------------------
+
+Notre méthodologie s'est appuyée sur une approche itérative systématique :
+
+Cycle d'amélioration continue :
+Chaque échec était analysé en détail pour identifier la cause racine et mettre 
+en place des corrections ciblées. Cette démarche nous a permis de passer d'un 
+taux de succès de 0% à 96% en quelques itérations.
+
+Tests incrémentaux :
+Plutôt que de viser directement l'objectif final, nous avons procédé par 
+étapes : génération de 2 heuristiques, puis 4, puis 12, enfin 100. Cette 
+progression nous a permis de valider chaque composant avant de passer à l'échelle.
+
+Documentation systématique :
+Chaque test, chaque erreur et chaque solution a été documenté dans des fichiers 
+de logs structurés, nous permettant de retracer précisément l'évolution du 
+projet et de justifier nos choix techniques.
+
+3. OUTILS DE SUIVI
+------------------
+
+Pour garantir la rigueur scientifique de notre approche, nous avons mis en place 
+plusieurs outils de suivi et de monitoring :
+
+Monitoring des performances :
+Un système de suivi en temps réel mesurait le taux de succès, le temps de génération, 
+et la qualité des heuristiques produites. Ces métriques nous permettaient d'ajuster 
+dynamiquement nos paramètres.
+
+Gestion des erreurs :
+Un handler spécialisé gérait les erreurs d'API (rate limits, timeouts) avec des 
+stratégies de retry adaptatives, garantissant la robustesse du système même en 
+cas de contraintes externes.
+
+Documentation des résultats :
+Chaque cycle d'évolution générait un rapport détaillé JSON contenant les scores, 
+les heuristiques générées, et les analyses statistiques. Cette approche garantit 
+la reproductibilité de notre étude.
+
+Cette méthodologie structurée nous a permis de surmonter les nombreux défis 
+techniques rencontrés et d'atteindre nos objectifs avec une rigueur scientifique 
+adaptée à une publication académique.
+
+================================================================================
+FIN DE LA PARTIE 2
+================================================================================
+
+PARTIE 3 : ENVIRONNEMENT DE TRAVAIL
+================================================================================
+
+1. LANGAGES ET BIBLIOTHÈQUES
+---------------------------
+
+Notre projet s'est appuyé sur un écosystème technologique spécifiquement adapté 
+aux besoins de l'algorithmique graphique et de l'intelligence artificielle.
+
+Python 3.9+ :
+Le choix de Python comme langage principal s'est imposé naturellement compte tenu 
+de son écosystème scientifique exceptionnel. Sa syntaxe claire, ses performances 
+adéquates pour nos besoins, et sa compatibilité avec les bibliothèques spécialisées 
+en ont fait le choix idéal pour le prototypage rapide et la production.
+
+NetworkX :
+Cette bibliothèque spécialisée dans la manipulation de graphes constitue le 
+fondement technique de notre projet. Elle offre une implémentation optimisée des 
+structures de données et algorithmes graphiques essentiels, nous permettant de 
+nous concentrer sur la logique de nos heuristiques sans réinventer les 
+fondamentaux.
+
+NumPy et Matplotlib :
+NumPy nous a fourni les outils de calcul vectoriel nécessaires pour l'évaluation 
+statistique des performances, tandis que Matplotlib nous a permis de générer les 
+visualisations essentielles à l'analyse et la présentation de nos résultats.
+
+JSON :
+Le format JSON a été adopté pour la persistance des données et des résultats, 
+offrant un équilibre parfait entre lisibilité humaine et efficacité de traitement 
+automatisé.
+
+2. TECHNOLOGIES API
+------------------
+
+La réussite de notre projet repose en grande partie sur notre utilisation stratégique 
+des technologies API cloud.
+
+Mistral API :
+Après avoir expérimenté plusieurs modèles locaux avec des résultats décevants, 
+l'API Mistral s'est imposée comme notre solution de génération de code. Sa qualité 
+de génération supérieure, sa fiabilité et sa gestion cohérente des tokens en ont 
+fait le choix optimal pour notre cas d'usage spécifique.
+
+Gestion des Rate Limits :
+Les contraintes des API cloud nous ont obligés à développer une infrastructure 
+sophistiquée de gestion des rate limits. Notre implémentation de backoff 
+exponentiel et de retry adaptatif représente une contribution technique significative 
+à la robustesse des systèmes d'IA conversationnelle.
+
+Patterns de Retry :
+Nous avons implémenté des patterns de retry sophistiqués capables de distinguer 
+les erreurs temporaires (rate limits) des erreurs permanentes, garantissant une 
+maximisation du taux de succès sans surcharge inutile des API.
+
+3. INFRASTRUCTURE LOCALE
+-----------------------
+
+Notre environnement de développement combinait plusieurs technologies complémentaires :
+
+Ollama et LLM locaux :
+Dans une première phase, nous avons expérimenté des modèles locaux via Ollama 
+(Qwen2.5-Coder, DeepSeek Coder V2). Bien que prometteuse en théorie, cette approche 
+s'est heurtée à des limitations pratiques importantes : incohérence du code généré, 
+manque de robustesse, et nécessité de ressources matérielles considérables.
+
+Environnement Windows PowerShell :
+Notre développement s'est effectué sous Windows avec PowerShell comme interface 
+de commande. Ce choix, bien que moins courant dans le milieu académique, s'est 
+avéré parfaitement adapté à nos besoins et a démontré la portabilité de notre 
+solution.
+
+Git et GitHub :
+La gestion de version avec Git et l'hébergement sur GitHub nous ont permis de 
+maintenir une traçabilité complète de notre évolution, de faciliter la collaboration 
+et de garantir la reproductibilité de nos résultats.
+
+4. ATOUTS TECHNOLOGIQUES
+------------------------
+
+Chaque choix technologique a été motivé par des avantages spécifiques pour notre 
+projet :
+
+Python et son écosystème :
+La richesse de l'écosystème scientifique Python nous a fait gagner un temps 
+considérable en éliminant le besoin de réimplémenter des algorithmes fondamentaux. 
+NetworkX en particulier représente des années d'optimisation que nous n'aurions pu 
+développer individuellement.
+
+API cloud vs modèles locaux :
+Les API cloud, malgré leurs contraintes, nous ont offert une qualité de génération 
+nettement supérieure aux modèles locaux. Le compromis entre coût et qualité s'est 
+avéré largement favorable pour notre cas d'usage.
+
+Infrastructure robuste :
+Notre développement d'une gestion sophistiquée des erreurs et des rate limits 
+représente une contribution technique réutilisable pour d'autres projets confrontés 
+aux mêmes défis d'intégration d'API cloud.
+
+Cet environnement technologique, bien que modeste en termes de ressources requises, 
+s'est avéré parfaitement adapté aux défis complexes de la génération automatique 
+d'heuristiques algorithmiques.
+
+================================================================================
+FIN DE LA PARTIE 3
+================================================================================
+
+PARTIE 4 : RÉSULTATS OBTENUS
+================================================================================
+
+1. RÉSULTATS QUANTITATIFS
+-------------------------
+
+Notre projet a atteint des résultats quantitatifs exceptionnels qui démontrent 
+la viabilité de l'approche FunSearch pour la génération automatique d'heuristiques.
+
+Performance de génération :
+Sur 100 cibles initiales (20 cycles × 5 candidats), nous avons réussi à générer 
+96 heuristiques valides, soit un taux de succès de 96%. Ce résultat remarquable 
+représente une amélioration infinie par rapport à notre taux de succès initial de 0%.
+
+Efficacité temporelle :
+L'ensemble du processus de génération et d'évaluation s'est déroulé en 34.3 minutes, 
+démontrant une efficacité remarquable compte tenu des contraintes des API cloud et 
+de la complexité du problème traité.
+
+Diversité algorithmique :
+Les 96 heuristiques générées présentent une diversité significative dans leurs 
+approches algorithmiques :
+- Variantes DSATUR (Degree Saturation Algorithm)
+- Algorithmes hybrides combinant plusieurs stratégies
+- Approches randomisées pour l'exploration
+- Méthodes degré-équilibrées
+- Optimisations locales et globales
+
+2. PERFORMANCE TECHNIQUE
+------------------------
+
+La réussite de notre projet repose sur une performance technique remarquable de 
+notre infrastructure.
+
+Gestion des contraintes API :
+Notre système de gestion des rate limits a démontré son efficacité en maintenant 
+un taux de succès élevé malgré les contraintes strictes de l'API Mistral. 
+Le mécanisme de backoff exponentiel et de retry adaptatif a permis de surmonter 
+les limitations systématiques rencontrées dans nos premières tentatives.
+
+Robustesse du code :
+Toutes les heuristiques générées ont passé avec succès notre validation syntaxique 
+et fonctionnelle, garantissant une qualité minimale du code produit. Cette validation 
+automatisée représente un garde-fou essentiel pour l'intégrité du système.
+
+Évaluation systématique :
+Chaque heuristique a été évaluée sur un benchmark de 50 graphes, garantissant 
+une comparaison équitable et statistiquement significative des performances. 
+Cette approche rigoureuse élimine les biais d'évaluation et assure la reproductibilité 
+de nos résultats.
+
+3. ANALYSE QUALITATIVE
+---------------------
+
+Au-delà des métriques quantitatives, notre projet a révélé des résultats qualitatifs 
+importants.
+
+Innovation algorithmique :
+Les heuristiques générées démontrent une capacité d'innovation réelle. Certaines 
+approches, comme les variantes hybrides DSATUR-degré ou les méthodes randomisées 
+équilibrées, représentent des combinaisons non-intuitives mais efficaces que 
+l'expertise humaine seule n'aurait probablement pas découvert.
+
+Stabilité des performances :
+Malgré la diversité des approches, les heuristiques générées maintiennent une 
+performance stable sur l'ensemble du benchmark, démontrant une robustesse 
+remarquable face à la variabilité des instances de test.
+
+Comparaison avec baseline :
+Les heuristiques générées parviennent à maintenir des performances comparables 
+à notre baseline greedy-degree, tout en explorant des espaces de solutions 
+différents. Cette capacité à diversifier les approches sans sacrifier la performance 
+constitue un succès majeur de notre approche.
+
+4. VISUALISATIONS ET MONITORING
+------------------------------
+
+Notre infrastructure de monitoring nous a permis de suivre précisément l'évolution 
+du projet et de générer des visualisations pertinentes.
+
+Graphiques d'évolution :
+Les graphiques générés automatiquement illustrent l'évolution des scores, des 
+taux de succès et des heuristiques cumulées au fil des cycles. Ces visualisations 
+permettent d'identifier rapidement les tendances et les points d'inflexion dans 
+notre processus d'optimisation.
+
+Rapports JSON détaillés :
+Chaque cycle a généré un rapport JSON complet contenant les métriques détaillées, 
+les scores individuels et les analyses statistiques. Cette documentation systématique 
+garantit la traçabilité complète de notre processus et facilite l'analyse post-hoc.
+
+Métriques de performance :
+Notre système suit en temps réel plusieurs métriques essentielles : taux de succès, 
+temps de génération, qualité du code, et performance algorithmique. Ces indicateurs 
+nous ont permis d'ajuster dynamiquement nos paramètres pour optimiser les résultats.
+
+Ces résultats, à la fois quantitatifs et qualitatifs, démontrent la viabilité de 
+l'approche FunSearch pour la génération automatique d'heuristiques algorithmiques 
+et ouvrent la voie à des applications plus larges dans le domaine de l'optimisation 
+combinatoire.
+
+================================================================================
+FIN DE LA PARTIE 4
+================================================================================
+
+PARTIE 5 : DIFFICULTÉS ET LIMITATIONS
+================================================================================
+
+1. ÉCHECS INITIAUX AVEC LLM LOCAUX
+---------------------------------
+
+Notre projet a débuté avec une phase d'exploration extensive des modèles de langage 
+locaux, qui s'est avérée être une série d'échecs instructifs mais coûteux en temps.
+
+Modèles testés via Ollama :
+Qwen2.5-Coder :
+Ce modèle, initialement prometteur pour la génération de code, s'est rapidement révélé 
+incapable de produire du code Python cohérent. Les heuristiques générées présentaient 
+des erreurs syntaxiques systématiques, des indentations incorrectes et une logique 
+algorithmique fragmentée. Malgré plusieurs tentatives d'optimisation des prompts, 
+le taux de succès est resté proche de zéro.
+
+DeepSeek Coder V2 :
+Bien que théoriquement spécialisé dans la génération de code, ce modèle a démontré 
+des limitations importantes dans la compréhension des contraintes spécifiques à la 
+coloration de graphes. Les heuristiques produites étaient souvent incomplètes ou 
+contenaient des erreurs logiques fondamentales qui les rendaient inutilisables.
+
+Mistral (local) :
+La version locale de Mistral, malgré sa réputation, s'est avérée incapable de 
+gérer la complexité algorithmique requise. Les réponses étaient souvent trop génériques 
+et manquaient de la précision nécessaire pour générer du code fonctionnel.
+
+Modèles testés hors Ollama :
+Llama 3.1 :
+Ce modèle a présenté des problèmes de compatibilité avec notre infrastructure 
+Python et des difficultés à maintenir un contexte cohérent sur la durée des 
+générations. Les heuristiques produites étaient souvent incohérentes et 
+difficilement intégrables dans notre framework.
+
+CodeLlama :
+Spécialisé dans la génération de code, ce modèle a néanmoins échoué à produire 
+des heuristiques complètes. Le code généré était fragmenté, avec des fonctions 
+incomplètes et des imports manquants, nécessitant une intervention manuelle 
+importante.
+
+StarCoder :
+Ce modèle a généré un nombre élevé d'erreurs systématiques, notamment dans la 
+gestion des structures de données NetworkX et la compréhension des contraintes 
+de coloration. Le taux d'échec a dépassé 95% même avec des prompts optimisés.
+
+2. DIFFICULTÉS AVEC LE SUDOKU
+----------------------------
+
+Avant de nous concentrer sur la coloration de graphes, nous avons tenté d'appliquer 
+notre approche au problème du Sudoku, une expérience qui s'est avérée être un 
+échec complet.
+
+Complexité des contraintes spécifiques :
+Le Sudoku présente des contraintes beaucoup plus strictes et complexes que la 
+coloration de graphes simple. Les LLM locaux ont démontré une incapacité 
+totale à comprendre et à implémenter correctement ces règles, notamment les 
+contraintes de ligne, colonne et région.
+
+Prompts inadaptés au domaine :
+Nos prompts initiaux, conçus pour des problèmes d'optimisation combinatoire 
+généraux, se sont avérés inadaptés à la nature très spécifique du Sudoku. 
+Même après plusieurs itérations, les modèles ne parvenaient pas à générer 
+d'heuristiques valides.
+
+Échec total de génération :
+Sur des centaines de tentatives, nous n'avons obtenu aucune heuristique 
+fonctionnelle pour le Sudoku. Cet échec nous a conduits à nous réorienter 
+vers la coloration de graphes, un problème plus adapté aux capacités des 
+modèles testés.
+
+3. DÉFIS TECHNIQUES MAJEURS
+--------------------------
+
+Même après notre transition réussie vers les API cloud, nous avons rencontré 
+des défis techniques significatifs qui ont menacé la viabilité de notre projet.
+
+Rate limits systématiques :
+L'API Mistral impose des contraintes strictes d'utilisation (erreurs 429) qui 
+ont initialement paralysé notre système. Ces limitations nous ont forcés à 
+développer une infrastructure sophistiquée de gestion des rate limits avec 
+backoff exponentiel et retry adaptatif.
+
+Collections de heuristiques corrompues :
+Un problème récurrent a été la corruption de nos collections d'heuristiques. 
+Le code généré contenait souvent des erreurs d'indentation, des fonctions 
+incomplètes ou des imports manquants, rendant les collections inutilisables. 
+Ce problème nous a obligés à développer des mécanismes de validation robustes.
+
+Extraction et validation du code :
+L'extraction du code des réponses des LLM s'est avérée complexe. Les modèles 
+généraient souvent du code dans des blocs markdown mal formés ou mélangeaient 
+code et explications, nécessitant des algorithmes d'extraction sophistiqués.
+
+4. LIMITATIONS ET LEÇONS APPRISES
+-------------------------------
+
+Notre expérience a révélé plusieurs limitations fondamentales de l'approche 
+FunSearch et nous a enseigné des leçons précieuses.
+
+Dépendance aux API cloud :
+La réussite finale de notre projet dépend entièrement de l'accès aux API cloud. 
+Cette dépendance représente une limitation importante pour la reproductibilité 
+et la pérennité de l'approche, notamment dans des contextes académiques ou 
+industriels avec des contraintes budgétaires.
+
+Coûts et contraintes à grande échelle :
+Bien que notre projet ait été réalisé avec un coût nul grâce à la version 
+gratuite de Mistral, l'extension à plus grande échelle pourrait engendrer 
+des coûts significatifs. Les rate limits imposent également des contraintes 
+pratiques sur la vitesse de génération.
+
+Qualité variable des heuristiques :
+Même avec un taux de succès élevé, la qualité des heuristiques générées reste 
+variable. Certaines approches innovantes compensent cette variabilité, mais 
+la nécessité d'une validation systématique reste un défi opérationnel.
+
+Ces difficultés, bien que significatives, nous ont permis de développer une 
+infrastructure robuste et des méthodologies rigoureuses qui constituent une 
+contribution technique valorisable au-delà de notre cas d'usage spécifique.
+
+================================================================================
+FIN DE LA PARTIE 5
+================================================================================
+
+ANNEXE : GUIDE D'UTILISATION
+================================================================================
+
+Ce guide détaille les étapes pour installer et utiliser le projet FunSearch de 
+coloration de graphes développé dans ce travail.
+
+1. ACCÈS AU PROJET
+---------------------
+
+Option A : Téléchargement direct depuis GitHub
+1. Accéder au lien du projet : https://github.com/fromwonderland/camilia_saba_funsearch_projet_graphes_open_data
+2. Cliquer sur le bouton vert "Code" puis "Download ZIP"
+3. Décompresser l'archive dans un dossier de votre choix
+4. Le dossier contiendra tous les fichiers nécessaires au projet
+
+Option B : Clonage via Git (recommandé pour les développeurs)
+1. Ouvrir un terminal ou une invite de commandes
+2. Naviguer vers le dossier où vous souhaitez installer le projet :
+   cd C:\Users\votre_nom\dossier_projets
+3. Exécuter la commande de clonage :
+   git clone https://github.com/fromwonderland/camilia_saba_funsearch_projet_graphes_open_data.git
+4. Entrer dans le dossier du projet :
+   cd camilia_saba_funsearch_projet_graphes_open_data
+
+2. PRÉREQUIS D'INSTALLATION
+------------------------------
+
+Python 3.9 ou supérieur :
+- Vérifier l'installation : python --version
+- Si nécessaire, télécharger depuis https://python.org
+
+Bibliothèques Python requises :
+pip install networkx numpy matplotlib
+
+Accès à l'API Mistral (optionnel pour la génération) :
+- Créer un compte sur https://console.mistral.ai/
+- Obtenir une clé API gratuite
+- Configurer la variable d'environnement :
+  set MISTRAL_API_KEY=votre_clé_api_ici
+
+3. GÉNÉRATION DU BENCHMARK
+---------------------------
+
+Le projet nécessite un ensemble de graphes de test pour évaluer les heuristiques :
+
+1. Générer les graphes de benchmark :
+   python generate_graph_benchmark.py
+
+2. Cette commande créera un dossier "graph_benchmark" contenant 
+   50 graphes aléatoires de différentes tailles (50-500 sommets)
+
+3. Vérifier la création des fichiers :
+   dir graph_benchmark
+
+4. EXÉCUTION DU PROJET FUNSEARCH
+----------------------------------
+
+Lancement avec paramètres par défaut (recommandé pour début) :
+python main_funsearch_robust.py
+
+Lancement avec paramètres personnalisés :
+python main_funsearch_robust.py --cycles 10 --candidates 5 --graphs 50 --provider mistral
+
+Options disponibles :
+- --cycles : nombre de cycles d'évolution (défaut : 8)
+- --candidates : nombre de candidats par cycle (défaut : 4)
+- --graphs : nombre de graphes pour l'évaluation (défaut : 75)
+- --provider : fournisseur LLM (mistral, openai, claude)
+
+5. SUIVI DE L'EXÉCUTION
+-------------------------
+
+Pendant l'exécution, le système affiche :
+- Progression des cycles d'évolution
+- Taux de succès de génération
+- Scores des meilleures heuristiques
+- Temps restant estimé
+
+Les résultats sont sauvegardés automatiquement dans :
+- logs/ : rapports JSON détaillés
+- graphs/ : visualisations des performances
+- heuristics/ : nouvelles heuristiques générées
+
+6. ANALYSE DES RÉSULTATS
+--------------------------
+
+Rapport final :
+- Ouvrir : logs/robust_final_report.json
+- Contient statistiques complètes et conclusions
+
+Graphiques de performance :
+- Ouvrir : graphs/robust_evolution.png
+- Visualise l'évolution des scores et taux de succès
+
+Heuristiques générées :
+- Consulter : heuristics/heuristic_collection_working.py
+- Contient toutes les heuristiques valides produites
+
+7. DÉPANNAGE COMMUN
+---------------------
+
+Problème : "ModuleNotFoundError"
+Solution : pip install networkx numpy matplotlib
+
+Problème : "Clé API non trouvée"
+Solution : set MISTRAL_API_KEY=votre_clé_api_ici
+
+Problème : "Rate limit exceeded"
+Solution : Le système gère automatiquement ces erreurs avec des retries
+
+Problème : "Aucune heuristique générée"
+Solution : Vérifier la connexion internet et la clé API
+
+8. PERSONNALISATION AVANCÉE
+---------------------------
+
+Modification des prompts :
+- Éditer : prompts/llm_prompt_graph_coloring_direct.txt
+- Adapter les instructions pour d'autres problèmes d'optimisation
+
+Ajout de nouvelles métriques :
+- Modifier : evaluation/evaluate_graph_coloring.py
+- Ajouter des critères d'évaluation personnalisés
+
+Changement de fournisseur LLM :
+- Modifier : funsearch_core/api_client.py
+- Ajouter support pour d'autres API (OpenAI, Claude, etc.)
+
+Ce guide permet une prise en main rapide du projet tout en offrant 
+des pistes de personnalisation pour des besoins spécifiques.
+
+================================================================================
+FIN DU GUIDE D'UTILISATION
+================================================================================

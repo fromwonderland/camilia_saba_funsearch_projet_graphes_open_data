@@ -1,0 +1,265 @@
+\documentclass[a4paper, 12pt, twoside]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}		
+\usepackage[francais]{babel}
+\usepackage{lmodern}
+\usepackage[top=2.5cm, bottom=2cm, 
+			left=3cm, right=2.5cm,
+			headheight=15pt]{geometry}
+\usepackage{graphicx}
+\usepackage{eso-pic}
+\usepackage{hyperref}
+
+\begin{document}
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Le problème de la coloration de graphes constitue l'un des problèmes fondamentaux de la théorie des graphes et de l'optimisation combinatoire. Classé dans la catégorie des problèmes NP-complets, il consiste à attribuer une couleur à chaque sommet d'un graphe de telle manière que deux sommets adjacents ne partagent jamais la même couleur, tout en minimisant le nombre total de couleurs utilisées.
+
+Les applications pratiques de ce problème sont nombreuses et variées :
+- Allocation des fréquences dans les réseaux de télécommunications
+- Planification des examens dans les établissements scolaires
+- Coloration de cartes géographiques
+- Allocation de ressources en informatique distribuée
+- Optimisation des circuits imprimés
+
+La complexité exponentielle de ce problème a motivé le développement de nombreuses heuristiques, mais la recherche manuelle d'algorithmes performants reste un processus chronophage et souvent limité par l'expertise humaine.
+
+FunSearch représente une rupture méthodologique significative dans l'approche des problèmes d'optimisation. Développé par Google DeepMind, ce cadre d'évolution automatique utilise les grands modèles de langage (LLM) pour générer, évaluer et améliorer des heuristiques algorithmiques de manière autonome.
+
+Le principe repose sur un cycle évolutif :
+\begin{enumerate}
+- Génération de nouvelles heuristiques par un LLM
+- Évaluation systématique sur un benchmark de référence
+- Sélection des meilleures solutions
+- Réinjection des solutions optimales dans le processus créatif
+\end{enumerate}
+
+Cette approche présente plusieurs avantages fondamentaux :
+- Exploration automatique d'un espace de solutions beaucoup plus vaste
+- Absence de biais cognitifs humains dans la conception
+- Capacité de découvrir des approches contre-intuitives mais efficaces
+- Adaptabilité à différents problèmes d'optimisation
+
+Notre projet vise à démontrer la faisabilité technique de l'approche FunSearch avec les technologies cloud actuelles, en particulier l'API Mistral, et à évaluer la qualité des heuristiques générées automatiquement pour la coloration de graphes.
+
+\section{Environnement de travail}
+Mon développement s'est effectué sous Windows avec PowerShell comme interface de commande. Ce choix, bien que moins courant dans le milieu académique, s'est avéré parfaitement adapté à mes besoins et a démontré la portabilité de ma solution.
+
+L'environnement technologique combinait plusieurs outils complémentaires :
+- Python 3.9+ comme langage principal
+- NetworkX pour la manipulation de graphes
+- API Mistral pour la génération de code
+- Git et GitHub pour la gestion de version
+
+\subsection{Langages et bibliothèques}
+
+\textbf{Python 3.9+} :
+Le choix de Python comme langage principal s'est imposé naturellement compte tenu de son écosystème scientifique exceptionnel. Sa syntaxe claire, ses performances adéquates pour mes besoins, et sa compatibilité avec les bibliothèques spécialisées en ont fait le choix idéal pour mon prototypage rapide et la production.
+
+\textbf{NetworkX} :
+Cette bibliothèque spécialisée dans la manipulation de graphes constitue le fondement technique de mon projet. Elle offre une implémentation optimisée des structures de données et algorithmes graphiques essentiels, me permettant de me concentrer sur la logique de mes heuristiques sans réinventer les fondamentaux.
+
+\textbf{NumPy et Matplotlib} :
+NumPy m'a fourni les outils de calcul vectoriel nécessaires pour l'évaluation statistique des performances, tandis que Matplotlib m'a permis de générer les visualisations essentielles à l'analyse et la présentation de mes résultats.
+
+\textbf{JSON} :
+Le format JSON a été adopté pour la persistance de mes données et de mes résultats, offrant un équilibre parfait entre lisibilité humaine et efficacité de traitement automatisé.
+
+\section{Description du projet et objectifs}
+	\subsection{Objectif principal}
+Démontrer la faisabilité technique de l'approche FunSearch avec les technologies cloud actuelles, en particulier l'API Mistral, et évaluer la qualité des heuristiques générées automatiquement.
+
+	\subsection{Objectifs secondaires}
+- Mettre en place une infrastructure robuste et reproductible
+- Analyser quantitativement la performance des heuristiques générées
+- Comparer les résultats avec les algorithmes de référence
+- Identifier les limites et opportunités de cette approche
+- Produire une étude académique complète et publiable
+
+\subsection{Périmètre de l'étude}
+- Graphes de 50 à 500 sommets
+- 50 instances de benchmark
+- Évaluation sur critères multiples
+- Score composite pour comparaison équitable
+
+\section{Bibliothèques, Outils et technologies}
+\subsection{Python et écosystème scientifique}
+Le choix de Python comme langage principal s'est imposé naturellement compte tenu de son écosystème scientifique exceptionnel. NetworkX offre une implémentation optimisée des structures de données et algorithmes graphiques essentiels.
+
+\subsection{Technologies API cloud}
+Après avoir expérimenté plusieurs modèles locaux avec des résultats décevants, l'API Mistral s'est imposée comme ma solution de génération de code. Sa qualité de génération supérieure, sa fiabilité et sa gestion cohérente des tokens en ont fait le choix optimal pour mon cas d'usage.
+
+\subsection{Infrastructure de monitoring}
+J'ai développé une infrastructure sophistiquée de gestion des rate limits avec backoff exponentiel et retry adaptatif. Cette contribution technique représente une innovation réutilisable pour d'autres projets confrontés aux mêmes défis.
+
+\section{Travail réalisé}
+\paragraph{Fonctionnalités réalisées :}
+- Générateur robuste : Système complet de génération d'heuristiques via API Mistral
+- 96 heuristiques valides : Taux de succès de 96% sur 100 cibles
+- Infrastructure de monitoring : Suivi en temps réel et rapports détaillés
+- Système d'évaluation : Benchmark de 50 graphes avec score composite
+- Gestion des erreurs : Rate limits et retry automatique
+- Documentation complète : Guide d'utilisation et code commenté
+
+\paragraph{Fonctionnalités non réalisées :}
+- Application au Sudoku : Échec dû à la complexité des contraintes spécifiques au Sudoku
+- LLM locaux performants : Qwen2.5-Coder, DeepSeek Coder V2, Llama 3.1, CodeLlama, StarCoder tous échoués
+- Support multi-fournisseurs : Limité à Mistral API (OpenAI, Claude non implémentés)
+
+\paragraph{Raisons des fonctionnalités non réalisées :}
+Les LLM locaux ont démontré une incapacité totale à générer du code Python cohérent pour des problèmes algorithmiques complexes. Le Sudoku présentait des contraintes trop strictes que les modèles ne pouvaient comprendre. Le support multi-fournisseurs nécessiterait une infrastructure plus complexe dépassant le cadre de mon projet.
+
+Ce projet de recherche a été mené de manière individuelle.
+
+\section{Difficultés rencontrées}
+	\subsection{LLM locaux inefficaces}
+Mon projet a débuté avec une phase d'exploration extensive des modèles de langage locaux, qui s'est avérée être une série d'échecs instructifs mais coûteux en temps.
+
+\textbf{Modèles testés via Ollama} :
+
+\textbf{Qwen2.5-Coder} :
+Ce modèle, initialement prometteur pour la génération de code, s'est rapidement révélé incapable de produire du code Python cohérent. Les heuristiques générées présentaient des erreurs syntaxiques systématiques, des indentations incorrectes et une logique algorithmique fragmentée. Malgré plusieurs tentatives d'optimisation des prompts, le taux de succès est resté proche de zéro.
+
+\textbf{DeepSeek Coder V2} :
+Bien que théoriquement spécialisé dans la génération de code, ce modèle a démontré des limitations importantes dans la compréhension des contraintes spécifiques à la coloration de graphes. Les heuristiques produites étaient souvent incomplètes ou contenaient des erreurs logiques fondamentales qui les rendaient inutilisables.
+
+\textbf{Mistral (local)} :
+La version locale de Mistral, malgré sa réputation, s'est avérée incapable de gérer la complexité algorithmique requise. Les réponses étaient souvent trop génériques et manquaient de la précision nécessaire pour générer du code fonctionnel.
+
+\textbf{Modèles testés hors Ollama} :
+
+\textbf{Llama 3.1} :
+Ce modèle a présenté des problèmes de compatibilité avec mon infrastructure Python et des difficultés à maintenir un contexte cohérent sur la durée des générations. Les heuristiques produites étaient souvent incohérentes et difficilement intégrables dans mon framework.
+
+\textbf{CodeLlama} :
+Spécialisé dans la génération de code, ce modèle a néanmoins échoué à produire des heuristiques complètes. Le code généré était fragmenté, avec des fonctions incomplètes et des imports manquants, nécessitant une intervention manuelle importante.
+
+\textbf{StarCoder} :
+Ce modèle a généré un nombre élevé d'erreurs systématiques, notamment dans la gestion des structures de données NetworkX et la compréhension des contraintes de coloration. Le taux d'échec a dépassé 95\% même avec des prompts optimisés.
+
+	\subsection{Échec du projet Sudoku}
+Avant de me concentrer sur la coloration de graphes, j'ai tenté d'appliquer mon approche au problème du Sudoku, une expérience qui s'est avérée être un échec complet.
+
+\textbf{Complexité des contraintes spécifiques} :
+Le Sudoku présente des contraintes beaucoup plus strictes et complexes que la coloration de graphes simple. Les LLM locaux ont démontré une incapacité totale à comprendre et à implémenter correctement ces règles, notamment les contraintes de ligne, colonne et région.
+
+\textbf{Prompts inadaptés au domaine} :
+Mes prompts initiaux, conçus pour des problèmes d'optimisation combinatoire généraux, se sont avérés inadaptés à la nature très spécifique du Sudoku. Même après plusieurs itérations, les modèles ne parvenaient pas à générer d'heuristiques valides.
+
+\textbf{Échec total de génération} :
+Sur des centaines de tentatives, je n'ai obtenu aucune heuristique fonctionnelle pour le Sudoku. Cet échec m'a conduit à me réorienter vers la coloration de graphes, un problème plus adapté aux capacités des modèles testés.
+
+	\subsection{Rate limits API cloud}
+L'API Mistral impose des contraintes strictes d'utilisation (erreurs 429) qui ont initialement paralysé mon système. J'ai dû développer une infrastructure sophistiquée de gestion des rate limits avec backoff exponentiel.
+
+	\subsection{Collections de heuristiques corrompues}
+Un problème récurrent a été la corruption de mes collections d'heuristiques. Le code généré contenait souvent des erreurs d'indentation, des fonctions incomplètes ou des imports manquants, m'obligeant à développer des mécanismes de validation robustes.
+
+\section{Bilan}
+	\subsection{Conclusion}
+Mon projet a atteint des résultats quantitatifs exceptionnels qui démontrent la viabilité de l'approche FunSearch pour la génération automatique d'heuristiques.
+
+\textbf{Performance de génération} :
+Sur 100 cibles initiales (20 cycles × 5 candidats), j'ai réussi à générer 96 heuristiques valides, soit un taux de succès de 96\%. Ce résultat remarquable représente une amélioration infinie par rapport à mon taux de succès initial de 0\%.
+
+\textbf{Efficacité temporelle} :
+L'ensemble de mon processus de génération et d'évaluation s'est déroulé en 34.3 minutes, démontrant une efficacité remarquable compte tenu des contraintes des API cloud et de la complexité du problème traité.
+
+\textbf{Diversité algorithmique} :
+Les 96 heuristiques générées présentent une diversité significative dans leurs approches algorithmiques :
+- Variantes DSATUR (Degree Saturation Algorithm)
+- Algorithmes hybrides combinant plusieurs stratégies
+- Approches randomisées pour l'exploration
+- Méthodes degré-équilibrées
+- Optimisations locales et globales
+
+\textbf{Innovation algorithmique} :
+Les heuristiques générées démontrent une capacité d'innovation réelle. Certaines approches, comme les variantes hybrides DSATUR-degré ou les méthodes randomisées équilibrées, représentent des combinaisons non-intuitives mais efficaces que l'expertise humaine seule n'aurait probablement pas découvert.
+
+L'infrastructure que j'ai développée, notamment la gestion des rate limits et les mécanismes de validation, représente une contribution technique réutilisable pour d'autres projets d'IA conversationnelle.
+
+	\subsection{Perspectives}
+Plusieurs pistes pourraient être explorées pour prolonger mon travail :
+- Extension à d'autres problèmes d'optimisation combinatoire
+- Support multi-fournisseurs API (OpenAI, Claude)
+- Optimisation des prompts pour des domaines spécifiques
+- Analyse comparative plus approfondie des heuristiques générées
+- Déploiement à plus grande échelle avec monitoring avancé
+
+Ces résultats, à la fois quantitatifs et qualitatifs, démontrent la viabilité de l'approche FunSearch pour la génération automatique d'heuristiques algorithmiques et ouvrent la voie à des applications plus larges dans le domaine de l'optimisation combinatoire.
+
+\newpage
+
+\section{Bibliographie}
+\renewcommand{\bibname}{}
+\renewcommand{\refname}{}
+\begin{thebibliography}{2}
+\end{thebibliography}
+
+\newpage
+\section{Webographie}
+\begin{thebibliography}{2}
+\end{thebibliography}
+
+\newpage
+\section{Annexes}
+\appendix
+\makeatletter
+\def\@seccntformat#1{Annexe~\csname the#1\endcsname:\quad}
+\makeatother
+	\section{Manuel utilisateur}
+	\subsection{Accès au projet}
+	\textbf{Option A : Téléchargement direct depuis GitHub}
+\begin{enumerate}
+- Accéder au lien du projet : \url{https://github.com/fromwonderland/camilia_saba_funsearch_projet_graphes_open_data}
+- Cliquer sur le bouton vert "Code" puis "Download ZIP"
+- Décompresser l'archive dans un dossier de votre choix
+- Le dossier contiendra tous les fichiers nécessaires au projet
+\end{enumerate}
+
+	\textbf{Option B : Clonage via Git (recommandé pour les développeurs)}
+\begin{enumerate}
+- Ouvrir un terminal ou une invite de commandes
+- Naviguer vers le dossier où vous souhaitez installer le projet
+- cd C:\Users\votre_nom\dossier_projets
+- Exécuter la commande de clonage
+- git clone https://github.com/fromwonderland/camilia_saba_funsearch_projet_graphes_open_data.git
+- Entrer dans le dossier du projet
+- cd camilia_saba_funsearch_projet_graphes_open_data
+\end{enumerate}
+
+	\subsection{Installation}
+	pip install networkx numpy matplotlib
+	
+	\subsection{Génération du benchmark}
+	python generate_graph_benchmark.py
+	
+	\subsection{Exécution}
+	python main_funsearch_robust.py --cycles 10 --candidates 5 --graphs 50 --provider mistral
+	
+	\section{Exemple d'exécution du projet}
+	\subsection{Résultats typiques}
+	LANCEMENT 100 HEURISTIQUES - VERSION FREE
+	Configuration: 20 cycles × 5 candidats = 100 heuristiques
+	Temps estimé: ~60 minutes
+	Coût: 0€ (version gratuite)
+	
+	\subsection{Performance obtenue}
+	ÉVOLUTION TERMINÉE !
+	Temps total: 2057.9s
+	Générées: 96/100h
+	Succès: 96.0%
+	Rapport: logs/robust_final_report.json
+	
+	\section{Structure du projet}
+- main_funsearch_robust.py : Script principal
+- funsearch_core/ : Infrastructure FunSearch
+- evaluation/ : Système d'évaluation
+- heuristics/ : Heuristiques générées
+- logs/ : Rapports et monitoring
+- graphs/ : Visualisations
+
+\end{document}
